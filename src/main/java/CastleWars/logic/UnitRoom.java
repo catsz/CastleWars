@@ -2,7 +2,11 @@ package CastleWars.logic;
 
 import CastleWars.data.Icon;
 import CastleWars.data.PlayerData;
+import CastleWars.data.UnitData;
 import arc.math.Mathf;
+import arc.math.geom.Point2;
+import arc.math.geom.Vec2;
+import arc.util.Time;
 import mindustry.content.Blocks;
 import mindustry.content.UnitTypes;
 import mindustry.game.Team;
@@ -13,7 +17,7 @@ import mindustry.world.Tiles;
 
 public class UnitRoom extends Room {
 
-    public static Tile blueSpawn, shardedSpawn;
+    public static Point2 blueSpawn, shardedSpawn;
 
     public enum Type {
         Attacker, Defender;
@@ -60,11 +64,11 @@ public class UnitRoom extends Room {
         data.income += income;
 
         if (type == Type.Attacker) {
-            Unit u = unit.spawn(data.player.team(), (data.player.team() == Team.sharded ? blueSpawn.drawx() : shardedSpawn.drawx()) + Mathf.random(-40, 40), (data.player.team() == Team.sharded ? blueSpawn.drawy() : shardedSpawn.drawy()) + Mathf.random(-40, 40));
+            Unit u = unit.spawn(data.player.team(), (data.player.team() == Team.sharded ? blueSpawn.x : shardedSpawn.x) + Mathf.random(-40, 40), (data.player.team() == Team.sharded ? blueSpawn.y : shardedSpawn.y) + Mathf.random(-40, 40));
             if (unit == UnitTypes.crawler) {
                 u.type = UnitTypes.mono;
             }
-            u.team(data.player.team());
+            u.team(Team.purple);
         } else if (data.player.team().core() != null) {
             Unit u = unit.spawn(data.player.team(), data.player.team().core().x + 30, data.player.team().core().y + Mathf.random(-40, 40));
             if (unit == UnitTypes.crawler) {
@@ -76,17 +80,15 @@ public class UnitRoom extends Room {
 
     @Override
     public boolean canBuy(PlayerData data) {
-        return super.canBuy(data) && (income > 0 || data.income - income >= 0);
+        return super.canBuy(data) && (income > 0 || data.income - income >= 0) && Time.timeSinceMillis(data.buyTime) >= UnitData.getCooldown(this.unit);
     }
 
     @Override
-    public void spawn(Tiles t
-    ) {
+    public void spawn(Tiles t) {
         super.spawn(t);
     }
 
     @Override
-    public void update() {
-    }
+    public void update() {}
 
 }

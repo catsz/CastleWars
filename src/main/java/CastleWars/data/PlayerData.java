@@ -6,6 +6,7 @@ import arc.Events;
 import arc.math.Mathf;
 import arc.struct.IntMap;
 import arc.util.Interval;
+import arc.util.Time;
 import arc.util.Timer;
 import mindustry.Vars;
 import mindustry.content.UnitTypes;
@@ -24,6 +25,7 @@ public class PlayerData {
 
     public Player player;
     public int money, income = 30;
+    public long buyTime = 0;
     Interval interval;
 
     public PlayerData(Player player) {
@@ -47,6 +49,7 @@ public class PlayerData {
                 }
                 if (room.check(player.unit().aimX, player.unit().aimY) && room.canBuy(this)) {
                     room.buy(this);
+                    buyTime = Time.millis();
                 }
             }
         }

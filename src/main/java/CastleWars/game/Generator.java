@@ -7,6 +7,7 @@ import CastleWars.logic.Room;
 import CastleWars.logic.TurretRoom;
 import CastleWars.logic.UnitRoom;
 import arc.func.Cons;
+import arc.math.geom.Point2;
 import arc.struct.Seq;
 import arc.util.Timer;
 import mindustry.Vars;
@@ -21,6 +22,8 @@ import mindustry.world.Block;
 import mindustry.world.Tile;
 import mindustry.world.Tiles;
 import mindustry.world.blocks.storage.CoreBlock;
+
+import java.awt.*;
 
 public class Generator implements Cons<Tiles> {
 
@@ -91,8 +94,8 @@ public class Generator implements Cons<Tiles> {
                 }
                 // Spawners place
                 if (saved.getn(x, y).floor().equals(Blocks.darkPanel2)) {
-                    UnitRoom.shardedSpawn = t.get(x, y);
-                    UnitRoom.blueSpawn = t.get(x, yy);
+                    UnitRoom.shardedSpawn = new Point2(x * Vars.tilesize, y * Vars.tilesize);
+                    UnitRoom.blueSpawn = new Point2(x * Vars.tilesize, yy * Vars.tilesize);
                 }
             }
         }
@@ -108,32 +111,32 @@ public class Generator implements Cons<Tiles> {
         int cx = 2, cy = saved.height + 2;
         int Padding = Room.ROOM_SIZE + 2;
         // Ground
-        addUnit(UnitTypes.dagger, cx, cy + 2, 50, 0);
-        addUnit(UnitTypes.mace, cx + Padding, cy + 2, 100, 1);
-        addUnit(UnitTypes.fortress, cx + Padding * 2, cy + 2, 300, 3);
-        addUnit(UnitTypes.scepter, cx + Padding * 3, cy + 2, 2400, 24);
-        addUnit(UnitTypes.reign, cx + Padding * 4, cy + 2, 7000, 70);
+        addUnit(UnitTypes.dagger, cx, cy + 2, 80, 0);
+        addUnit(UnitTypes.mace, cx + Padding, cy + 2, 200, 1);
+        addUnit(UnitTypes.fortress, cx + Padding * 2, cy + 2, 600, 3);
+        addUnit(UnitTypes.scepter, cx + Padding * 3, cy + 2, 3200, 22);
+        addUnit(UnitTypes.reign, cx + Padding * 4, cy + 2, 10000, 60);
         // Support 
         cx += 2;
-        addUnit(UnitTypes.nova, cx + Padding * 5, cy + 2, 60, 0);
-        addUnit(UnitTypes.pulsar, cx + Padding * 6, cy + 2, 120, 1);
-        addUnit(UnitTypes.quasar, cx + Padding * 7, cy + 2, 400, 4);
-        addUnit(UnitTypes.vela, cx + Padding * 8, cy + 2, 2000, 20);
-        addUnit(UnitTypes.corvus, cx + Padding * 9, cy + 2, 8000, 80);
+        addUnit(UnitTypes.nova, cx + Padding * 5, cy + 2, 80, 0);
+        addUnit(UnitTypes.pulsar, cx + Padding * 6, cy + 2, 160, 1);
+        addUnit(UnitTypes.quasar, cx + Padding * 7, cy + 2, 600, 6);
+        addUnit(UnitTypes.vela, cx + Padding * 8, cy + 2, 3000, 12);
+        addUnit(UnitTypes.corvus, cx + Padding * 9, cy + 2, 18000, 140);
         // Spiders
         cx -= 2;
-        addUnit(UnitTypes.crawler, cx, cy + 2 + Padding * 2, 40, 0);
-        addUnit(UnitTypes.atrax, cx + Padding, cy + 2 + Padding * 2, 100, 1);
-        addUnit(UnitTypes.spiroct, cx + Padding * 2, cy + 2 + Padding * 2, 300, 3);
-        addUnit(UnitTypes.arkyid, cx + Padding * 3, cy + 2 + Padding * 2, 2600, 26);
-        addUnit(UnitTypes.toxopid, cx + Padding * 4, cy + 2 + Padding * 2, 9000, 90);
+        addUnit(UnitTypes.crawler, cx, cy + 2 + Padding * 2, 50, 0);
+        addUnit(UnitTypes.atrax, cx + Padding, cy + 2 + Padding * 2, 150, 1);
+        addUnit(UnitTypes.spiroct, cx + Padding * 2, cy + 2 + Padding * 2, 500, 3);
+        addUnit(UnitTypes.arkyid, cx + Padding * 3, cy + 2 + Padding * 2, 4200, 26);
+        addUnit(UnitTypes.toxopid, cx + Padding * 4, cy + 2 + Padding * 2, 14000, 80);
         // Naval 
         cx += 2;
-        addUnit(UnitTypes.risso, cx + Padding * 5, cy + 2 + Padding * 2, 250, 2);
-        addUnit(UnitTypes.minke, cx + Padding * 6, cy + 2 + Padding * 2, 350, 3);
-        addUnit(UnitTypes.bryde, cx + Padding * 7, cy + 2 + Padding * 2, 800, 8);
-        addUnit(UnitTypes.sei, cx + Padding * 8, cy + 2 + Padding * 2, 3500, 32);
-        addUnit(UnitTypes.omura, cx + Padding * 9, cy + 2 + Padding * 2, 10000, 100);
+        addUnit(UnitTypes.risso, cx + Padding * 5, cy + 2 + Padding * 2, 150, 2);
+        addUnit(UnitTypes.minke, cx + Padding * 6, cy + 2 + Padding * 2, 400, 4);
+        addUnit(UnitTypes.bryde, cx + Padding * 7, cy + 2 + Padding * 2, 1400, 8);
+        addUnit(UnitTypes.sei, cx + Padding * 8, cy + 2 + Padding * 2, 4200, 16);
+        addUnit(UnitTypes.omura, cx + Padding * 9, cy + 2 + Padding * 2, 15000, 100);
     }
 
     private void turretGen(Tile tile, int yy) {

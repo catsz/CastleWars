@@ -3,10 +3,11 @@ package CastleWars;
 import CastleWars.data.Icon;
 import arc.util.CommandHandler;
 import arc.util.Time;
+import mindustry.maps.Maps;
 import mindustry.mod.Plugin;
 import mindustry.gen.Player;
 import CastleWars.data.PlayerData;
-import CastleWars.data.UnitDeathData;
+import CastleWars.data.UnitData;
 import CastleWars.game.Logic;
 import arc.Events;
 import mindustry.Vars;
@@ -32,6 +33,8 @@ public class Main extends Plugin {
         rules.waves = true;
         rules.waveTimer = false;
         rules.waveSpacing = 30 * Time.toMinutes;
+        Vars.maps.setShuffleMode(Maps.ShuffleMode.custom);
+        rules.waveTeam = Team.purple;
 
         for (Block block : Vars.content.blocks()) {
             if (block == Blocks.thoriumWall || block == Blocks.thoriumWallLarge || block == Blocks.plastaniumWall || block == Blocks.plastaniumWallLarge || block == Blocks.phaseWall || block == Blocks.phaseWallLarge) {
@@ -40,7 +43,7 @@ public class Main extends Plugin {
             rules.bannedBlocks.add(block);
         }
 
-        UnitDeathData.init();
+        UnitData.init();
         PlayerData.init();
         Icon.load();
 
