@@ -33,8 +33,8 @@ public class Main extends Plugin {
         rules.waves = true;
         rules.waveTimer = false;
         rules.waveSpacing = 30 * Time.toMinutes;
+        rules.dropZoneRadius = 150;
         Vars.maps.setShuffleMode(Maps.ShuffleMode.custom);
-        rules.waveTeam = Team.purple;
 
         for (Block block : Vars.content.blocks()) {
             if (block == Blocks.thoriumWall || block == Blocks.thoriumWallLarge || block == Blocks.plastaniumWall || block == Blocks.plastaniumWallLarge || block == Blocks.phaseWall || block == Blocks.phaseWallLarge) {

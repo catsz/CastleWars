@@ -14,6 +14,7 @@ import mindustry.Vars;
 import mindustry.content.Blocks;
 import mindustry.content.Items;
 import mindustry.content.UnitTypes;
+import mindustry.entities.units.UnitCommand;
 import mindustry.game.Gamemode;
 import mindustry.game.Team;
 import mindustry.game.Teams;
@@ -68,6 +69,7 @@ public class Generator implements Cons<Tiles> {
                 }
             }
         }
+        Team.blue.data().command = UnitCommand.idle;
         postGeneration(t);
     }
 
