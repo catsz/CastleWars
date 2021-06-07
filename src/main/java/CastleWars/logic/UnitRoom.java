@@ -15,7 +15,6 @@ import mindustry.type.UnitType;
 import mindustry.world.Tile;
 import mindustry.world.Tiles;
 
-//TODO use crux as attack team
 public class UnitRoom extends Room {
 
     public static Point2 blueSpawn, shardedSpawn;
@@ -69,7 +68,7 @@ public class UnitRoom extends Room {
             if (unit == UnitTypes.crawler) {
                 u.type = UnitTypes.mono;
             }
-            u.team(Team.purple);
+            u.team(Team.crux);
         } else if (data.player.team().core() != null) {
             Unit u = unit.spawn(data.player.team(), data.player.team().core().x + 30, data.player.team().core().y + Mathf.random(-40, 40));
             if (unit == UnitTypes.crawler) {
