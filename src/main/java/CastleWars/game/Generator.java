@@ -26,6 +26,8 @@ import mindustry.world.blocks.storage.CoreBlock;
 
 import java.awt.*;
 
+//TODO make this WorldContext
+//TODO make unit spawns actually show up like normal
 public class Generator implements Cons<Tiles> {
 
     Tiles saved;
@@ -70,6 +72,7 @@ public class Generator implements Cons<Tiles> {
             }
         }
         Team.blue.data().command = UnitCommand.idle;
+        Team.sharded.data().command = UnitCommand.idle;
         postGeneration(t);
     }
 
@@ -98,6 +101,8 @@ public class Generator implements Cons<Tiles> {
                 if (saved.getn(x, y).floor().equals(Blocks.darkPanel2)) {
                     UnitRoom.shardedSpawn = new Point2(x * Vars.tilesize, y * Vars.tilesize);
                     UnitRoom.blueSpawn = new Point2(x * Vars.tilesize, yy * Vars.tilesize);
+                    t.getn(x, y).setBlock(Blocks.spawn);
+                    t.getn(x, yy).setBlock(Blocks.spawn);
                 }
             }
         }

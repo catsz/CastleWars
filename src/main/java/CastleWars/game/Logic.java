@@ -20,6 +20,7 @@ import mindustry.world.Block;
 import mindustry.world.Tile;
 import mindustry.world.blocks.storage.CoreBlock;
 
+//TODO make gamemode attack so you can actually use crux team as attack
 public class Logic {
 
     public boolean worldLoaded = false;

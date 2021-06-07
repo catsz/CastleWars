@@ -15,6 +15,7 @@ import mindustry.type.UnitType;
 import mindustry.world.Tile;
 import mindustry.world.Tiles;
 
+//TODO use crux as attack team
 public class UnitRoom extends Room {
 
     public static Point2 blueSpawn, shardedSpawn;

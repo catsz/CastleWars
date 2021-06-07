@@ -3,6 +3,8 @@ package CastleWars.logic;
 import arc.struct.Seq;
 import mindustry.Vars;
 
+//TODO maybe make a room for command center
+//TODO remove draw position variables and instead add methods which calculate them to save memory
 public abstract class Room implements RoomComp {
 
     public static Seq<Room> rooms = new Seq<Room>();

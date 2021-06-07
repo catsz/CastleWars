@@ -5,6 +5,7 @@ import mindustry.content.Blocks;
 import mindustry.world.Tiles;
 import mindustry.world.blocks.environment.Floor;
 
+//TODO make this extend position and remove drawx and drawy
 public interface RoomComp {
     public int cost();
     
